@@ -2,8 +2,10 @@ import {useEffect, useState} from "react";
 import {GameEntity} from "../../entities/Game.entity.ts";
 import {Element} from "../../components/Element";
 
+const gameInstance = new GameEntity()
+
 export const GamePage = () => {
-  const [game] = useState(new GameEntity())
+  const [game] = useState(gameInstance)
   const [, refresh] = useState(false);
   
   useEffect(() => {
@@ -25,6 +27,7 @@ export const GamePage = () => {
           />
         ))
       }
+      <span id="timer" className='absolute top-5 right-5'></span>
     </div>
   );
 };
