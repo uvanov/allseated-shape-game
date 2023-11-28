@@ -4,7 +4,6 @@ import {CollectEntity} from "./Collect.entity.ts";
 import {AvoidEntity} from "./Avoid.entity.ts";
 import {ChangeEntity} from "./Change.entity.ts";
 import {TimerEntity} from "./Timer.entity.ts";
-import {supabase} from "../supabase.config.ts";
 
 export class GameEntity {
   score: ScoreEntity

@@ -1,7 +1,6 @@
 import {useCallback, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {supabase} from "../../supabase.config.ts";
-import {ScoreboardItem} from "./Win.types.ts";
 import {useScoreboard} from "./hooks/useScoreboard.ts";
 
 export const WinPage = () => {
