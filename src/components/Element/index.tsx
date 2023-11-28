@@ -5,7 +5,7 @@ import {getRandomCoords} from "../../utilities/getRandomCoords.ts";
 
 
 
-export const Element: FC<ElementEntity> = (
+export const Element: FC<Omit<ElementEntity, 'game'>> = (
   {
     color,
     shape,

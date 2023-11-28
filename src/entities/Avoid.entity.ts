@@ -1,14 +1,12 @@
 import {ElementEntity} from "./Element.entity.ts";
-import {ScoreEntity} from "./Score.entity.ts";
+import {GameEntity} from "./Game.entity.ts";
 
 export class AvoidEntity extends ElementEntity {
-  constructor() {
-    super("avoid", 'red', 'square');
+  constructor(game: GameEntity) {
+    super("avoid", 'red', 'square', game);
   }
   
   onClick = () => {
-    console.log(this)
-    ScoreEntity.clear();
-    // Redirect to fail
+    this.game.fail();
   }
 }

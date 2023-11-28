@@ -1,15 +1,19 @@
 import {ElementEntity} from "./Element.entity.ts";
-import {ScoreEntity} from "./Score.entity.ts";
+import {GameEntity} from "./Game.entity.ts";
 
 export class ChangeEntity extends ElementEntity {
-  constructor() {
-    super("change", 'green', 'circle');
+  constructor(game: GameEntity) {
+    super("change", 'green', 'circle', game);
     this.startChangingElement()
   }
   
   onClick = () => {
-    console.log(this)
-    this.color === 'green' ? ScoreEntity.increase() : ScoreEntity.clear(); // В случае проигрыша ещё редирект
+    if(this.color === 'green') {
+      this.game.score.increase()
+      this.game.removeElement(this.id)
+    } else {
+      this.game.fail()
+    }
   }
   
   private startChangingElement() {

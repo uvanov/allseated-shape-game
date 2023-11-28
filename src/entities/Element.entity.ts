@@ -1,24 +1,23 @@
+import {GameEntity} from "./Game.entity.ts";
+import {v4 as uuid} from 'uuid'
+
 type ElementType = 'collect' | 'avoid' | 'change'
 type ElementColor = 'green' | 'red'
 type ElementShape = 'circle' | 'square' | 'rectangle'
 
-export abstract class ElementEntity {
-  type: ElementType
-  color: ElementColor
-  shape: ElementShape
+export class ElementEntity {
+  id: string;
   
   protected constructor(
-    type: ElementType,
-    color: ElementColor,
-    shape: ElementShape,
+    public type: ElementType,
+    public color: ElementColor,
+    public shape: ElementShape,
+    protected game: GameEntity
   ) {
-    this.type = type;
-    this.color = color;
-    this.shape = shape;
+    this.id = uuid()
   }
   
-  onClick() {
-  }
+  onClick() {}
 }
 
 

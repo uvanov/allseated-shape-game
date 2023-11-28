@@ -1,13 +1,13 @@
 import {ElementEntity} from "./Element.entity.ts";
-import {ScoreEntity} from "./Score.entity.ts";
+import {GameEntity} from "./Game.entity.ts";
 
 export class CollectEntity extends ElementEntity {
-  constructor() {
-    super("collect", 'green', 'rectangle');
+  constructor(game: GameEntity) {
+    super("collect", 'green', 'rectangle', game);
   }
   
   onClick = () => {
-    console.log(this)
-    ScoreEntity.increase();
+    this.game.score.increase();
+    this.game.removeElement(this.id)
   }
 }
