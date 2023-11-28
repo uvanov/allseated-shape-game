@@ -1,12 +1,13 @@
 export class TimerEntity {
   time: number = 0;
-  intervalId: number = 0;
+  intervalId: NodeJS.Timeout | null = null;
   
   constructor() {
     this.startTimer()
   }
   
   stopTimer() {
+    if(!this.intervalId) return;
     clearInterval(this.intervalId);
   }
   
