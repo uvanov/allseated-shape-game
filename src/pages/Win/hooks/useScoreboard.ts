@@ -11,6 +11,7 @@ export const useScoreboard = () => {
         .from('records')
         .select()
         .order('time', {ascending: true})
+        .limit(10)
         .returns<ScoreboardItem[]>();
       
       if(!data) return console.error(error);

@@ -45,7 +45,7 @@ export const WinPage = () => {
         ))}
       </div>
       <h2 className='text-3xl'>
-        Your record {record}s
+        Your record {record / 1000}s
       </h2>
       <input
         type="text"
