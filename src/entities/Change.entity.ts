@@ -12,6 +12,7 @@ export class ChangeEntity extends ElementEntity {
   
   private startChangingElement() {
     setInterval(() => {
+      console.log('change')
       this.color = this.color === 'green' ? 'red' : 'green';
     }, 2000)
   }

@@ -1,6 +1,6 @@
 import {ElementEntity} from "./Element.entity.ts";
 
-export class AvoidElementEntity extends ElementEntity {
+export class AvoidEntity extends ElementEntity {
   constructor() {
     super("avoid", 'red', 'square');
   }

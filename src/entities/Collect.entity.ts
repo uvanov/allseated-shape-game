@@ -6,6 +6,7 @@ export class CollectEntity extends ElementEntity {
   }
   
   onClick() {
-  
+    const score = parseInt(localStorage.getItem('score')!) || 0
+    localStorage.setItem('score', `${score + 1}`)
   }
 }
