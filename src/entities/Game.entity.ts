@@ -41,7 +41,7 @@ export class GameEntity {
     if (this.elements.every(element => element.type === 'avoid')) return this.win();
   }
   
-  private async win() {
+  private win() {
     this.timer.stopTimer();
     localStorage.setItem('time', `${this.timer.time}`);
     alert(`You won with time ${this.timer.time / 1000} seconds`)
