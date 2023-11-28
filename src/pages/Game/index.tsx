@@ -27,7 +27,7 @@ export const GamePage = () => {
           />
         ))
       }
-      <span id="timer" className='absolute top-5 right-5'></span>
+      <span id="timer" className='absolute top-5 right-5 text-2xl'></span>
     </div>
   );
 };
