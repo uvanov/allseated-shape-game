@@ -1,4 +1,5 @@
 import {ElementEntity} from "./Element.entity.ts";
+import {ScoreEntity} from "./Score.entity.ts";
 
 export class ChangeEntity extends ElementEntity {
   constructor() {
@@ -6,13 +7,13 @@ export class ChangeEntity extends ElementEntity {
     this.startChangingElement()
   }
   
-  onClick() {
-    alert('Success!')
+  onClick = () => {
+    console.log(this)
+    this.color === 'green' ? ScoreEntity.increase() : ScoreEntity.clear(); // В случае проигрыша ещё редирект
   }
   
   private startChangingElement() {
     setInterval(() => {
-      console.log('change')
       this.color = this.color === 'green' ? 'red' : 'green';
     }, 2000)
   }
