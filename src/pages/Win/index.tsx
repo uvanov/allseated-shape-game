@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import toast from 'react-hot-toast';
 import {useScoreboard} from "./hooks/useScoreboard.ts";
 import {Button} from "@components/Button";
+import {formatTime} from "@utils/formatTime.ts";
 import {supabase} from "../../supabase.config.ts";
 
 export const WinPage = () => {
@@ -20,15 +21,13 @@ export const WinPage = () => {
     if (time) {
       setRecord(+time)
     } else {
-      setTimeout(() => {
-        toast.error('Oops. I can\'t find your time');
-      }, 0)
+      localStorage.setItem('time', '0')
     }
   }, []);
   
   const onSubmit = useCallback(async () => {
     if (name.trim().length <= 3) return toast('Name has to be longer than 3 symbols');
-    console.log(name, name.length)
+    
     await supabase.from('records').insert({
       name: name.trim(),
       time: +record
@@ -55,17 +54,17 @@ export const WinPage = () => {
               </span>
             </div>
             <span>
-              {score.time / 1000}s
+              {formatTime(score.time)}s
             </span>
           </div>
         ))}
       </div>
       {
-        !!record ?
+        !!record &&
           (
             <>
               <h2 className='text-2xl'>
-                Your record {record / 1000}s
+                Your record {formatTime(record)}s
               </h2>
               <input
                 type="text"
@@ -78,12 +77,11 @@ export const WinPage = () => {
                 Submit
               </Button>
             </>
-          ) : (
-            <Link to='/' className='text-blue-400 text-xl'>
-              Re-play
-            </Link>
           )
       }
+      <Link to='/' className='text-blue-400 text-xl'>
+        Re-play
+      </Link>
     </div>
   );
 };

@@ -4,8 +4,12 @@ import {Element} from '@components/Element';
 
 
 export const GamePage = () => {
-  const [game] = useState(new GameEntity())
+  const [game, setGame] = useState<GameEntity>()
   const [, refresh] = useState(false);
+  
+  useEffect(() => {
+    setGame(new GameEntity())
+  }, []);
   
   useEffect(() => {
     const interval = setInterval(() => refresh(prev => !prev), 100)
@@ -18,7 +22,7 @@ export const GamePage = () => {
   return (
     <div>
       {
-        game.elements.map((element) => {
+        game && game.elements.map((element) => {
           return (
             <Element
               {...element}

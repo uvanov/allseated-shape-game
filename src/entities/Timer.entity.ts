@@ -1,3 +1,5 @@
+import {formatTime} from "@utils/formatTime.ts";
+
 export class TimerEntity {
   time: number = 0;
   intervalId: NodeJS.Timeout | null = null;
@@ -18,7 +20,7 @@ export class TimerEntity {
       this.time = Date.now() - startTime;
       const timerElement = document.getElementById('timer')
       if(!timerElement) return;
-      timerElement.innerText = `${(this.time / 1000).toFixed(3)}`;
+      timerElement.innerText = `${formatTime(this.time)}`;
     }, 10)
   }
 }

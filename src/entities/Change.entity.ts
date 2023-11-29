@@ -1,5 +1,6 @@
 import {ElementEntity} from "./Element.entity.ts";
 import {GameEntity} from "./Game.entity.ts";
+import {CONFIG} from "../game.config.ts";
 
 export class ChangeEntity extends ElementEntity {
   constructor(game: GameEntity) {
@@ -18,6 +19,6 @@ export class ChangeEntity extends ElementEntity {
   private startChangingElement() {
     setInterval(() => {
       this.color = this.color === 'green' ? 'red' : 'green';
-    }, 2000)
+    }, CONFIG.BEHAVIOR_CHANGE_TIME_INTERVAL)
   }
 }

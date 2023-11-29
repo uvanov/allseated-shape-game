@@ -5,6 +5,7 @@ import {AvoidEntity} from "./Avoid.entity.ts";
 import {ChangeEntity} from "./Change.entity.ts";
 import {TimerEntity} from "./Timer.entity.ts";
 import {Coordinates} from './Coordinates.ts';
+import {CONFIG} from "../game.config.ts";
 
 export class GameEntity {
   elements: ElementEntity[]
@@ -15,17 +16,9 @@ export class GameEntity {
     this.timer = new TimerEntity();
     this.coordinates = new Coordinates();
     this.elements = [
-      new CollectEntity(this),
-      new CollectEntity(this),
-      new CollectEntity(this),
-      new CollectEntity(this),
-      new AvoidEntity(this),
-      new AvoidEntity(this),
-      new AvoidEntity(this),
-      new AvoidEntity(this),
-      new ChangeEntity(this),
-      new ChangeEntity(this),
-      new ChangeEntity(this),
+      ...new Array(CONFIG.COLLECT_ELEMENTS_COUNT).fill('').map(() => new CollectEntity(this)),
+      ...new Array(CONFIG.AVOID_ELEMENTS_COUNT).fill('').map(() => new AvoidEntity(this)),
+      ...new Array(CONFIG.CHANGE_ELEMENTS_COUNT).fill('').map(() => new ChangeEntity(this)),
     ]
   }
   
