@@ -1,17 +1,17 @@
-import {FC, useState} from "react";
+import {FC} from "react";
 import {clsx} from "clsx";
 import {ElementEntity} from "@entities/Element.entity";
-import {getRandomCoords} from "@utils/getRandomCoords";
 
 export const Element: FC<Omit<ElementEntity, 'game'>> = (
   {
     color,
     shape,
     onClick,
+    coordinates,
   }
 ) => {
   
-  const [coordinates] = useState(getRandomCoords());
+  
   
   const classes = clsx(
     'absolute',
@@ -24,8 +24,8 @@ export const Element: FC<Omit<ElementEntity, 'game'>> = (
   
   return (
     <div
+      style={{ top: coordinates.y, left: coordinates.x }}
       className={classes}
-      style={{ top: coordinates.y + 'px', left: coordinates.x + 'px' }}
       onClick={onClick}
     />
   );

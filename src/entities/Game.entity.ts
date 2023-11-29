@@ -4,12 +4,16 @@ import {CollectEntity} from "./Collect.entity.ts";
 import {AvoidEntity} from "./Avoid.entity.ts";
 import {ChangeEntity} from "./Change.entity.ts";
 import {TimerEntity} from "./Timer.entity.ts";
+import {Coordinates} from './Coordinates.ts';
 
 export class GameEntity {
   elements: ElementEntity[]
   timer: TimerEntity
+  coordinates: Coordinates
   
   constructor() {
+    this.timer = new TimerEntity();
+    this.coordinates = new Coordinates();
     this.elements = [
       new CollectEntity(this),
       new CollectEntity(this),
@@ -23,7 +27,6 @@ export class GameEntity {
       new ChangeEntity(this),
       new ChangeEntity(this),
     ]
-    this.timer = new TimerEntity();
   }
   
   fail() {

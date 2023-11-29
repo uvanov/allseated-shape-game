@@ -2,10 +2,9 @@ import {useEffect, useState} from 'react';
 import {GameEntity} from '@entities/Game.entity.ts';
 import {Element} from '@components/Element';
 
-const gameInstance = new GameEntity()
 
 export const GamePage = () => {
-  const [game] = useState(gameInstance)
+  const [game] = useState(new GameEntity())
   const [, refresh] = useState(false);
   
   useEffect(() => {
@@ -19,13 +18,14 @@ export const GamePage = () => {
   return (
     <div>
       {
-        game.elements.map((element) => (
-          <Element
-            key={element.id}
-            {...element}
-            onClick={element.onClick}
-          />
-        ))
+        game.elements.map((element) => {
+          return (
+            <Element
+              {...element}
+              onClick={element.onClick}
+            />
+          )
+        })
       }
       <span id="timer" className='absolute top-5 right-5 text-2xl'></span>
     </div>
