@@ -1,8 +1,8 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
-import {StartPage} from "./pages/Start";
-import {GamePage} from "./pages/Game";
-import {WinPage} from "./pages/Win";
-import {Toaster} from "react-hot-toast";
+import {Toaster} from 'react-hot-toast';
+import {StartPage} from '@pages/Start';
+import {GamePage} from '@pages/Game';
+import {WinPage} from '@pages/Win';
 
 export const App = () => {
   return (

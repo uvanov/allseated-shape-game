@@ -1,6 +1,6 @@
-import {useEffect, useState} from "react";
-import {GameEntity} from "../../entities/Game.entity.ts";
-import {Element} from "../../components/Element";
+import {useEffect, useState} from 'react';
+import {GameEntity} from '@entities/Game.entity.ts';
+import {Element} from '@components/Element';
 
 const gameInstance = new GameEntity()
 

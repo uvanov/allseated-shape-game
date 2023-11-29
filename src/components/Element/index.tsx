@@ -1,9 +1,7 @@
 import {FC, useState} from "react";
-import {ElementEntity} from "../../entities/Element.entity.ts";
 import {clsx} from "clsx";
-import {getRandomCoords} from "../../utilities/getRandomCoords.ts";
-
-
+import {ElementEntity} from "@entities/Element.entity";
+import {getRandomCoords} from "@utils/getRandomCoords";
 
 export const Element: FC<Omit<ElementEntity, 'game'>> = (
   {

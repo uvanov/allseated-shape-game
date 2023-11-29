@@ -1,15 +1,13 @@
 import {useCallback, useEffect, useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import toast from 'react-hot-toast';
-import {supabase} from "../../supabase.config.ts";
 import {useScoreboard} from "./hooks/useScoreboard.ts";
-import {Button} from "../../components/Button";
+import {Button} from "@components/Button";
+import {supabase} from "../../supabase.config.ts";
 
 export const WinPage = () => {
-  
   const [record, setRecord] = useState(0);
   const [name, setName] = useState('')
-  const navigate = useNavigate()
   
   const {
     scoreboard,
@@ -18,12 +16,17 @@ export const WinPage = () => {
   
   useEffect(() => {
     const time = localStorage.getItem('time');
-    // if (!time || time === '0') return navigate('/');
-    setRecord(+time)
+    
+    if (time) {
+      setRecord(+time)
+    } else {
+      setTimeout(() => {
+        toast.error('Oops. I can\'t find your time');
+      }, 0)
+    }
   }, []);
   
   const onSubmit = useCallback(async () => {
-    console.log(name, record)
     if (name.length < 0) return toast('Enter your name');
     
     await supabase.from('records').insert({
