@@ -9,7 +9,6 @@ export class ChangeEntity extends ElementEntity {
   
   onClick = () => {
     if(this.color === 'green') {
-      this.game.score.increase()
       this.game.removeElement(this.id)
     } else {
       this.game.fail()

@@ -1,18 +1,15 @@
+import toast from 'react-hot-toast'
 import {ElementEntity} from "./Element.entity.ts";
-import {ScoreEntity} from "./Score.entity.ts";
 import {CollectEntity} from "./Collect.entity.ts";
 import {AvoidEntity} from "./Avoid.entity.ts";
 import {ChangeEntity} from "./Change.entity.ts";
 import {TimerEntity} from "./Timer.entity.ts";
 
 export class GameEntity {
-  score: ScoreEntity
   elements: ElementEntity[]
   timer: TimerEntity
   
   constructor() {
-    this.score = new ScoreEntity()
-    this.score.initialize()
     this.elements = [
       new CollectEntity(this),
       new CollectEntity(this),
@@ -30,10 +27,12 @@ export class GameEntity {
   }
   
   fail() {
-    this.score.clear();
     this.timer.stopTimer()
-    alert('Failed')
-    window.location.href = '/'
+    toast.error('Failed');
+    
+    setTimeout(() => {
+      window.location.href = '/'
+    }, 1000)
   }
   
   removeElement(id: string) {
@@ -44,8 +43,10 @@ export class GameEntity {
   private win() {
     this.timer.stopTimer();
     localStorage.setItem('time', `${this.timer.time}`);
-    alert(`You won with time ${this.timer.time / 1000} seconds`)
-    window.location.href = '/win'
+    toast.success(`You won with time ${this.timer.time / 1000} seconds`)
+    setTimeout(() => {
+      window.location.href = '/win'
+    }, 1500)
   }
 }
 

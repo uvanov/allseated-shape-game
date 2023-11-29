@@ -7,7 +7,6 @@ export class CollectEntity extends ElementEntity {
   }
   
   onClick = () => {
-    this.game.score.increase();
     this.game.removeElement(this.id)
   }
 }

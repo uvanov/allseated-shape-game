@@ -1,12 +1,14 @@
 import {Link} from "react-router-dom";
+import {Button} from "../../components/Button";
 
 export const StartPage = () => {
+  
   return (
     <div className='w-full h-full flex items-center justify-center'>
       <Link to='/game'>
-        <button className='bg-emerald-300 py-5 px-10 rounded-2xl font-bold'>
-          НАЧАТЬ ИГРАТЬ
-        </button>
+        <Button>
+          Start Playing
+        </Button>
       </Link>
     </div>
   );

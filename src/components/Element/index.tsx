@@ -18,7 +18,8 @@ export const Element: FC<Omit<ElementEntity, 'game'>> = (
   const classes = clsx(
     'absolute',
     'h-16',
-    color === 'red' ? 'bg-red-500' : 'bg-green-500',
+    'cursor-pointer',
+    color === 'red' ? 'bg-rose-600' : 'bg-teal-500',
     shape === 'rectangle' ? 'w-28' : 'w-16',
     shape === 'circle' && 'rounded-full'
   )
