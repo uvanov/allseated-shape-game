@@ -27,8 +27,8 @@ export const WinPage = () => {
   }, []);
   
   const onSubmit = useCallback(async () => {
-    if (name.length < 0) return toast('Enter your name');
-    
+    if (name.length <= 3) return toast('Name has to be longer than 3 symbols');
+    console.log(name, name.length)
     await supabase.from('records').insert({
       name,
       time: +record
