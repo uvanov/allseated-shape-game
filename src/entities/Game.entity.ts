@@ -32,7 +32,7 @@ export class GameEntity {
     if (this.elements.every(element => element.type === 'avoid')) return this.win();
   }
   
-  private win() {
+   win() {
     this.timer.stopTimer();
     localStorage.setItem('time', `${this.timer.time}`);
     toast.success(`You won with time ${this.timer.time / 1000} seconds`)

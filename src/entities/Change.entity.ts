@@ -1,10 +1,9 @@
 import {ElementEntity} from "./Element.entity.ts";
-import {GameEntity} from "./Game.entity.ts";
-import {CONFIG, ElementAction, ElementShape} from "../game.config.ts";
+import {CONFIG, ElementAction, ElementShape, ILimitedGame} from "../game.config.ts";
 
 export class ChangeEntity extends ElementEntity {
   constructor(
-    game: GameEntity,
+    game: ILimitedGame,
     shape: ElementShape,
     action?: ElementAction,
   ) {

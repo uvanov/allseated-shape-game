@@ -1,3 +1,5 @@
+import {GameEntity} from "@entities/Game.entity.ts";
+
 export const CONFIG = {
   BEHAVIOR_CHANGE_TIME_INTERVAL: 2000,
   AVOID_ELEMENTS_COUNT: 4,
@@ -18,6 +20,9 @@ export interface IElementConstructor {
   shape: ElementShape,
   action?: ElementAction;
 }
+
+export type ILimitedGame = Pick<GameEntity, 'coordinates' | 'win' | 'fail' | 'removeElement'>
+
 
 export const responseFromServer: IElementConstructor[] = [
   {
