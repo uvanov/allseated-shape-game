@@ -1,24 +1,20 @@
 import toast from 'react-hot-toast'
 import {ElementEntity} from "./Element.entity.ts";
-import {CollectEntity} from "./Collect.entity.ts";
-import {AvoidEntity} from "./Avoid.entity.ts";
-import {ChangeEntity} from "./Change.entity.ts";
 import {TimerEntity} from "./Timer.entity.ts";
 import {Coordinates} from './Coordinates.ts';
-import {CONFIG} from "../game.config.ts";
+import {IElementConstructor} from "../game.config.ts";
+import {ElementsFactory} from "@entities/EntityFactory.entity.ts";
 
 export class GameEntity {
   elements: ElementEntity[]
   timer: TimerEntity
   coordinates: Coordinates
   
-  constructor() {
+  constructor(elements: IElementConstructor[]) {
     this.timer = new TimerEntity();
     this.coordinates = new Coordinates();
     this.elements = [
-      ...new Array(CONFIG.COLLECT_ELEMENTS_COUNT).fill('').map(() => new CollectEntity(this)),
-      ...new Array(CONFIG.AVOID_ELEMENTS_COUNT).fill('').map(() => new AvoidEntity(this)),
-      ...new Array(CONFIG.CHANGE_ELEMENTS_COUNT).fill('').map(() => new ChangeEntity(this)),
+      ...new ElementsFactory(this).createElements(elements)
     ]
   }
   

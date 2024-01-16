@@ -1,14 +1,20 @@
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {GameEntity} from '@entities/Game.entity.ts';
 import {Element} from '@components/Element';
+import {fetchElements} from "@utils/fetchElements.ts";
 
 
 export const GamePage = () => {
   const [game, setGame] = useState<GameEntity>()
   const [, refresh] = useState(false);
   
+  const initializeGame = useCallback(async () => {
+    const elements = await fetchElements();
+    setGame(new GameEntity(elements))
+  }, [])
+  
   useEffect(() => {
-    setGame(new GameEntity())
+    initializeGame()
   }, []);
   
   useEffect(() => {

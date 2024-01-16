@@ -1,24 +1,23 @@
 import {GameEntity} from "./Game.entity.ts";
 import {v4 as uuid} from 'uuid'
 import {Coordinate} from "@entities/Coordinates.ts";
+import {ElementAction, ElementColor, ElementShape, ElementType} from "../game.config.ts";
 
-type ElementType = 'collect' | 'avoid' | 'change'
-type ElementColor = 'green' | 'red'
-type ElementShape = 'circle' | 'square' | 'rectangle'
 
 export class ElementEntity {
-  id: string;
-  coordinates: Coordinate
-  
   protected constructor(
+    protected game: GameEntity,
     public type: ElementType,
     public color: ElementColor,
     public shape: ElementShape,
-    protected game: GameEntity
+    public action?: ElementAction
   ) {
     this.id = uuid()
     this.coordinates = this.game.coordinates.generateRandomCoordinates();
   }
+  id: string;
+  
+  coordinates: Coordinate
   
   onClick() {}
 }

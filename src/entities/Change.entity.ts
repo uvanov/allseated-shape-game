@@ -1,10 +1,14 @@
 import {ElementEntity} from "./Element.entity.ts";
 import {GameEntity} from "./Game.entity.ts";
-import {CONFIG} from "../game.config.ts";
+import {CONFIG, ElementAction, ElementShape} from "../game.config.ts";
 
 export class ChangeEntity extends ElementEntity {
-  constructor(game: GameEntity) {
-    super("change", 'green', 'circle', game);
+  constructor(
+    game: GameEntity,
+    shape: ElementShape,
+    action?: ElementAction,
+  ) {
+    super(game, "change", 'green', shape, action);
     this.startChangingElement()
   }
   

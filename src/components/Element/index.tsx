@@ -8,10 +8,9 @@ export const Element: FC<Omit<ElementEntity, 'game'>> = (
     shape,
     onClick,
     coordinates,
+    action,
   }
 ) => {
-  
-  
   
   const classes = clsx(
     'absolute',
@@ -19,7 +18,8 @@ export const Element: FC<Omit<ElementEntity, 'game'>> = (
     'cursor-pointer',
     color === 'red' ? 'bg-rose-600' : 'bg-teal-500',
     shape === 'rectangle' ? 'w-28' : 'w-16',
-    shape === 'circle' && 'rounded-full'
+    shape === 'circle' && 'rounded-full',
+    action && action
   )
   
   return (
